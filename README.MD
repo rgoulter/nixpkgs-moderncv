@@ -38,6 +38,20 @@ be done with:
 
 with the resulting PDF ending up in `./result/resume.pdf`.
 
+Alternatively, you can enter a shell that can build the LaTeX documents by running:
+
+```
+nix-shell
+```
+
+then:
+
+```
+[nix-shell:~/nixpkgs-moderncv]$ xelatex resume.tex
+```
+
+to generate `resume.pdf` in the current directory.
+
 ## GitHub Action
 
 The GitHub Action workflow defined in `.github/workflows` will build and
