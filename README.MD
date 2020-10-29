@@ -7,6 +7,8 @@ This repository can be used as a template to create a (private) repository
 which can automatically generate PDFs from the LaTeX document in tagged
 releases.
 
+[Example of generated PDF resume](https://github.com/rgoulter/nixpkgs-moderncv/releases/download/v1.0/template.pdf).
+
 ![](moderncv_example.png)
 
 ## Setup
