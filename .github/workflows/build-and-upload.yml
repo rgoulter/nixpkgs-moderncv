@@ -16,7 +16,9 @@ jobs:
       - uses: cachix/install-nix-action@v11
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: nix-build
+        # Change "template" (for template.tex)
+        # to the filename of the tex file.
+      - run: ./nix-build-with-document.sh template
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -33,6 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          # Change "template" (for template.tex)
+          # to the filename of the tex file.
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./result/template.pdf
           asset_name: template.pdf
