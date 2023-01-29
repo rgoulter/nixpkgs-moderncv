@@ -1,9 +1,6 @@
 {
   description = "";
   inputs = {
-    # Found by considering history of pkgs.nix:
-    # https://github.com/NixOS/nixpkgs/commits/master/pkgs/tools/typesetting/tex/texlive/pkgs.nix
-    # nixpkgs.url = "github:NixOS/nixpkgs?rev=c5787e5b8cc68d9478758b742f5da43b5ee7f909";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
   outputs = {
