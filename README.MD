@@ -13,43 +13,47 @@ releases.
 
 ## Setup
 
-Follow the instructions for [installing Nix](https://nixos.org/guides/install-nix.html)
+Follow the instructions for [installing Nix](https://nixos.org/download.html):
 
 ```
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
-or
-
-```
-curl -o install-nix-2.3.8 https://releases.nixos.org/nix/nix-2.3.8/install
-curl -o install-nix-2.3.8.asc https://releases.nixos.org/nix/nix-2.3.8/install.asc
-gpg2 --recv-keys B541D55301270E0BCF15CA5D8170B4726D7198DE
-gpg2 --verify ./install-nix-2.3.8.asc
-# then: $ sh ./install-nix-2.3.8
-```
-
 ## Building PDF
+
+### Running with Nix
 
 With Nix installed, building e.g. `resume.tex` in the current directory can
 be done with:
 
 ```
-./nix-build-with-document.sh resume
+nix run .#xelatex resume.tex
 ```
 
-with the resulting PDF ending up in `./result/resume.pdf`.
+with the resulting PDF ending up in `./resume.pdf`.
 
-Alternatively, you can enter a shell that can build the LaTeX documents by running:
+### Using Direnv
+
+Alternatively, you can enter a shell that can build the LaTeX documents by using
+[direnv](https://direnv.net/).
+
+Allowing the `.envrc` file with
 
 ```
-nix-shell
+direnv allow
 ```
 
-then:
+will load the packages from the `default` `devShell` in the `flake.nix`,
+which allows building `resume.tex` using:
 
 ```
-[nix-shell:~/nixpkgs-moderncv]$ xelatex resume.tex
+just resume.tex
+```
+
+or
+
+```
+xelatex resume.tex
 ```
 
 to generate `resume.pdf` in the current directory.
